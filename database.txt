@@ -1,0 +1,47 @@
+CREATE DATABASE schoolManagement; # to create a new database
+
+USE schoolManagement; # to start work with database
+
+# Student Table
+CREATE TABLE student( 
+id INT AUTO_INCREMENT,
+name VARCHAR(100) NOT NULL,
+family VARCHAR(100) NOT NULL,
+birthDate DATE NOT NULL,
+nationalCode VARCHAR(10) UNIQUE,
+address VARCHAR(100) NOT NULL,
+PRIMARY KEY (id, nationalCode)
+);
+
+# Grade Table
+CREATE TABLE grade(
+id INT AUTO_INCREMENT,
+studentId INT,
+math VARCHAR(3) NOT NULL,
+chemistry VARCHAR(3) NOT NULL,
+physics VARCHAR(3) NOT NULL,
+history VARCHAR(3) NOT NULL,
+programming VARCHAR(3) NOT NULL,
+PRIMARY KEY (id),
+FOREIGN KEY (studentId) REFERENCES student(id)
+);
+
+
+# insert data
+INSERT INTO student
+(name, family, birthDate, nationalCode, address)
+VALUES
+('aryan', 'kamal', '2006-09-28', '3543453455', 'Olive Street, Los Angles'),
+('bardia', 'saffarhamidi', '2005-07-10', '8456248931', '5th Street, Los Angles'),
+('arad', 'khoshkenar', '2005-07-10', '4512326597', '5th Street, Los Angles'),   
+('alireza', 'molaie', '2004-10-08', '4879561234', '4th Street, Los Angles'),
+('noora', 'mehranfar', '2008-02-25', '7842101254', '5th Street, Los Angles'),
+('iliya', 'mohseni', '2005-06-07', '4784216314', '4th Street, Los Angles');
+
+
+INSERT INTO grade
+(studentId, math, chemistry, physics, history, programming)
+VALUES
+(2, 90, 95, 80, 100, 100),
+(3, 80, 90, 100, 95, 100),
+(4, 100, 70, 89, 98, 95);
