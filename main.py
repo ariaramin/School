@@ -1,8 +1,6 @@
 from tkcalendar import DateEntry
-
 from tkinter import *
 from tkinter.ttk import Notebook, Treeview, Scrollbar
-
 from database import *
 
 
@@ -30,8 +28,8 @@ def student_create():
     n_id.set('')
     addr.set('')
     tree.delete(*tree.get_children())
-    persons = StudentSelect().get()
-    for person in persons:
+    people = StudentSelect().get()
+    for person in people:
         tree.insert("",person[0], text=person[0], values=(person[1], person[2], person[3]))
 
 
@@ -39,8 +37,8 @@ def student_search():
     name = search_name.get().lower()
     family = search_family.get().lower()
     tree.delete(*tree.get_children())
-    persons = StudentSearch(name, family).get()
-    for person in persons:
+    people = StudentSearch(name, family).get()
+    for person in people:
         tree.insert("",person[0], text=person[0], values=(person[1], person[2], person[3]))
 
 def grade_insert():
@@ -71,8 +69,8 @@ def on_double_click(event):
         top.destroy()
 
         tree.delete(*tree.get_children())
-        persons = StudentSelect().get()
-        for person in persons:
+        people = StudentSelect().get()
+        for person in people:
             tree.insert("",person[0], text=person[0], values=(person[1], person[2], person[3]))
 
     def length(a , b, c):
@@ -209,8 +207,8 @@ tree.heading("one", text="Name")
 tree.heading("two", text="Family")
 tree.heading("three", text="Code",anchor=W)
 
-persons = StudentSelect().get()
-for person in persons:
+people = StudentSelect().get()
+for person in people:
     tree.insert("",person[0], text=person[0], values=(person[1], person[2], person[3]))
 
 tree.grid(row=2, column=0, columnspan=3)
